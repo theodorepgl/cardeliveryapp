@@ -1,2 +1,22 @@
-<h1>Bookings#new</h1>
-<p>Find me in app/views/bookings/new.html.erb</p>
+<div class="text-center">
+	<h1>New Booking</h1>
+
+	<%= form_with(model: @booking, url: bookings_path, local: true) do |form| %>
+	  <%= form.label :car, 'Car Type' %>
+	  <%= form.text_field :car %>
+	  <br>
+	  <%= form.label :pickup_datetime, 'Pickup Date and Time' %>
+	  <%= form.datetime_local_field :pickup_datetime %>
+	  <br>
+	  <%= form.label :dropoff_datetime, 'Dropoff Date and Time' %>
+	  <%= form.datetime_local_field :dropoff_datetime %>
+	  <br>
+	  <%= form.label :pickup_location %>
+	  <%= form.text_field :pickup_location %>
+	  <br>
+	  <%= form.label :dropoff_location %>
+	  <%= form.text_field :dropoff_location %>
+	  <br>
+	  <%= form.submit 'Submit Booking' %>
+	<% end %>
+</div>
