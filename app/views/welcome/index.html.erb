@@ -1,31 +1,46 @@
-<h1 class="text-center">Welcome to Car Delivery Home</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Car Delivery Homepage</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container">
+    <h1 class="text-center">Welcome to Car Delivery Homepage</h1><br>
 
-<div class="row">
-  <div class="col-md-4">
-    <%= link_to image_tag("kudat.jpg", alt: "Image 1"), new_user_session_path %>
+    <div class="row">
+      <% destinations = [
+          { image: "kudat.jpg", alt: "KK to KUDAT", description: "Kota Kinabalu to Kudat", distance: "100 km", price: "RM800" },
+          { image: "km.jpg", alt: "KK to KOTA MARUDU", description: "Kota Kinabalu to Kota Marudu", distance: "80 km", price: "RM800" },
+          { image: "ranau.jpg", alt: "KK to RANAU", description: "Kota Kinabalu to Ranau", distance: "120 km", price: "RM800" },
+          { image: "sandakan.jpg", alt: "KK to SANDAKAN", description: "Kota Kinabalu to Sandakan", distance: "200 km", price: "RM800" },
+          { image: "papar.jpg", alt: "KK to PAPAR", description: "Kota Kinabalu to Papar", distance: "60 km", price: "RM800" },
+          { image: "tawau.jpg", alt: "KK to TAWAU", description: "Kota Kinabalu to Tawau", distance: "250 km", price: "RM800" },
+          { image: "sipitang.jpg", alt: "KK to SIPITANG", description: "Kota Kinabalu to Sipitang", distance: "70 km", price: "RM800" },
+          { image: "tenom.jpg", alt: "KK to TENOM", description: "Kota Kinabalu to Tenom", distance: "90 km", price: "RM800" },
+          { image: "nabawan.jpg", alt: "KK to NABAWAN", description: "Kota Kinabalu to Nabawan", distance: "110 km", price: "RM800" }
+        ]
+      %>
+
+      <% destinations.each do |destination| %>
+        <div class="col-md-4">
+          <% if user_signed_in? %>
+            <%= link_to image_tag(destination[:image], alt: destination[:alt], class: "img-fluid"), bookings_path %>
+          <% else %>
+            <%= link_to image_tag(destination[:image], alt: destination[:alt], class: "img-fluid"), new_user_session_path %>
+          <% end %>
+          <p>Description: <%= destination[:description] %></p>
+          <p>Distance: <%= destination[:distance] %></p>
+          <p>Price: <%= destination[:price] %></p>
+        </div>
+      <% end %>
+    </div>
   </div>
-  <div class="col-md-4">
-    <%= link_to image_tag("download.jpeg", alt: "Image 2"), new_user_session_path %>
-  </div>
-  <div class="col-md-4">
-    <%= link_to image_tag("download.jpeg", alt: "Image 3"), new_user_session_path %>
-  </div>
-  <div class="col-md-4">
-    <%= link_to image_tag("download.jpeg", alt: "Image 1"), new_user_session_path %>
-  </div>
-  <div class="col-md-4">
-    <%= link_to image_tag("download.jpeg", alt: "Image 2"), new_user_session_path %>
-  </div>
-  <div class="col-md-4">
-    <%= link_to image_tag("download.jpeg", alt: "Image 3"), new_user_session_path %>
-  </div>
-  <div class="col-md-4">
-    <%= link_to image_tag("download.jpeg", alt: "Image 1"), new_user_session_path %>
-  </div>
-  <div class="col-md-4">
-    <%= link_to image_tag("download.jpeg", alt: "Image 2"), new_user_session_path %>
-  </div>
-  <div class="col-md-4">
-    <%= link_to image_tag("download.jpeg", alt: "Image 3"), new_user_session_path %>
-  </div>
-</div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

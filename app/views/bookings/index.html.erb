@@ -1,2 +1,20 @@
 <h1>Your Bookings</h1>
 
+<div class="text-center">
+	<h1>New Booking</h1>
+
+	<%= form_with(model: @booking, url: bookings_path, local: true) do |form| %>
+	  <%= form.label :car, 'Car Type' %>
+	  <%= form.text_field :car %>
+	  <%= form.label :pickup_datetime, 'Pickup Date and Time' %>
+	  <%= form.datetime_local_field :pickup_datetime %>
+	  <%= form.label :pickup_location %>
+	  <%= form.text_field :pickup_location %>
+	  <%= form.label :dropoff_location %>
+	  <%= form.text_field :dropoff_location %>
+	  <%= form.label :distance, 'Distance' %>
+	  <%= form.text_field :distance %>
+	  <br>
+	  <%= form.submit 'Submit Booking' %>
+	<% end %>
+</div>
