@@ -1,10 +1,12 @@
-<div class="container">
-  <h2 class="text-center">Booking Details</h2><br>
+<h1>Your Bookings</h1>
 
-  <p><strong>Car Type:</strong> <%= @car_type %></p>
-  <p><strong>Pickup Location:</strong> <%= @pickup_location %></p>
-  <p><strong>Dropoff Location:</strong> <%= @dropoff_location %></p>
-  <p><strong>Pickup Time:</strong> <%= @pickup_time %></p>
-  <p><strong>Distance:</strong> <%= @distance %> km</p>
-  <p><strong>Price:</strong> RM<%= @price %></p>
-</div>
+<% if @bookings.any? %>
+  <% @bookings.each do |booking| %>
+    <%= link_to booking_path(booking) do %>
+      <%= booking.listing.title %>
+    <% end %>
+    <p><%= booking.car %> to <%= booking.pickup_datetime %></p>
+  <% end %>
+<% else %>
+  <p>No bookings yet </p>
+<% end %>

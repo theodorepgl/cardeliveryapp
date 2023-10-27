@@ -1,8 +1,37 @@
-<%= form_with model: @booking do |f| %>
-	<%= f.hidden_field :listing_id, value: @listing.id%>
-	<%= f.date_field :check_in %>
-	<br>
-	<%= f.date_field :check_out %>
-	<br><br>
-	<%= f.submit %>
+<%= form_with model: booking, local: true do |form| %>
+  <div class="form-group">
+    <%= form.label :car_type, "Car Type" %>
+    <%= form.select :car_type, options_for_select(["Motorcycle", "Small Vehicle", "Big Vehicle", "Lorry"]), {}, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :pickup_location, "Pickup Location" %>
+    <%= form.select :pickup_location, options_for_select(["Kota Kinabalu"]), {}, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :dropoff_location, "Dropoff Location" %>
+    <%= form.select :dropoff_location, options_for_select(["Kudat", "Kota Marudu", "Ranau", "Sandakan", "Papar", "Tawau", "Sipitang", "Tenom", "Nabawan"]), {}, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :pickup_time, "Pickup Time" %>
+    <%= form.datetime_local_field :pickup_time, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :distance, "Distance" %>
+    <%= form.text_field :distance, class: "form-control", disabled: true %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :price, "Price" %>
+    <%= form.text_field :price, class: "form-control", disabled: true %>
+  </div>
+
+  <%= form.hidden_field :destination_description, value: "" %>
+
+  <div class="form-group">
+    <%= form.submit "Place Booking", class: "btn btn-primary" %>
+  </div>
 <% end %>
