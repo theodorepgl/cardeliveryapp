@@ -17,6 +17,7 @@ gem "importmap-rails"
 gem "turbo-rails"
 gem "stimulus-rails"
 gem "sassc-rails"
+gem "slim-rails"
 
 # ActiveStorage
 gem "image_processing", "~> 1.2"

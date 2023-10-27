@@ -27,7 +27,7 @@
       <% destinations.each do |destination| %>
         <div class="col-md-4">
           <% if user_signed_in? %>
-            <%= link_to image_tag(destination[:image], alt: destination[:alt], class: "img-fluid"), bookings_path %>
+            <%= link_to image_tag(destination[:image], alt: destination[:alt], class: "img-fluid"), new_booking_path %>
           <% else %>
             <%= link_to image_tag(destination[:image], alt: destination[:alt], class: "img-fluid"), new_user_session_path %>
           <% end %>
@@ -37,7 +37,7 @@
         </div>
       <% end %>
     </div>
-  </div>
+  </div><br><br>
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
