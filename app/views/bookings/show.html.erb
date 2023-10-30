@@ -1,2 +1,15 @@
-<h1>Bookings#show</h1>
-<p>Find me in app/views/bookings/show.html.erb</p>
+<h2><%= @booking.new_car%></h2>
+
+<h5>Pick up on:</h5>
+<p>Date: <%= @booking.pickup_datetime%></p>
+<p>Location: <%= @booking.pickup_location%></p>
+
+<br>
+
+<h5>Drop off</h5>
+<p>Location: <%= @booking.dropoff_location%></p>
+
+<h5>Booking Details</h5>
+<p>Distance: <%= @booking.distance%></p>
+<p>Total price: <%= @booking.price%></p>
+<p></p>

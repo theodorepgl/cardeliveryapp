@@ -1,4 +1,6 @@
 class BookingsController < ApplicationController
+  before_action :authenticate_user!
+  
   def index
     @bookings = current_user.bookings.all
   end
@@ -8,9 +10,9 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @booking = current_user.bookings.create(booking_params) 
+    @booking = current_user.bookings.new(booking_params)
     if @booking.save
-      redirect_to booking_path(@booking)
+      redirect_to booking_path(@booking), notice: "Booking success!"
     else
       render :new
     end

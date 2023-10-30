@@ -1,9 +1,15 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Car Delivery Homepage</title>
+  <style>
+    .destination-image {
+      height: 300px;
+      width: 400px;
+      object-fit: cover;
+    }
+  </style>
 </head>
 
 <body>
@@ -12,33 +18,31 @@
 
     <div class="row">
       <% destinations = [
-          { image: "kudat.jpg", alt: "KK to KUDAT", description: "Kota Kinabalu to Kudat", distance: "179.1 km", price: "RM800" },
-          { image: "km.jpg", alt: "KK to KOTA MARUDU", description: "Kota Kinabalu to Kota Marudu", distance: "118.5 km", price: "RM800" },
-          { image: "ranau.jpg", alt: "KK to RANAU", description: "Kota Kinabalu to Ranau", distance: "129.5 km", price: "RM800" },
-          { image: "sandakan.jpg", alt: "KK to SANDAKAN", description: "Kota Kinabalu to Sandakan", distance: "354.8 km", price: "RM800" },
-          { image: "papar.jpg", alt: "KK to PAPAR", description: "Kota Kinabalu to Papar", distance: "37.7 km", price: "RM800" },
-          { image: "tawau.jpg", alt: "KK to TAWAU", description: "Kota Kinabalu to Tawau", distance: "451 km", price: "RM800" },
-          { image: "sipitang.jpg", alt: "KK to SIPITANG", description: "Kota Kinabalu to Sipitang", distance: "138 km", price: "RM800" },
-          { image: "tenom.jpg", alt: "KK to TENOM", description: "Kota Kinabalu to Tenom", distance: "149.7 km", price: "RM800" },
-          { image: "nabawan.jpg", alt: "KK to NABAWAN", description: "Kota Kinabalu to Nabawan", distance: "175.9 km", price: "RM800" }
+          { image: "kudat.jpg", alt: "KK to KUDAT", description: "Kota Kinabalu to Kudat", distance: "179.1 km" },
+          { image: "km.jpg", alt: "KK to KOTA MARUDU", description: "Kota Kinabalu to Kota Marudu", distance: "118.5 km" },
+          { image: "ranau.jpg", alt: "KK to RANAU", description: "Kota Kinabalu to Ranau", distance: "129.5 km" },
+          { image: "sandakan.jpg", alt: "KK to SANDAKAN", description: "Kota Kinabalu to Sandakan", distance: "354.8 km" },
+          { image: "papar.jpg", alt: "KK to PAPAR", description: "Kota Kinabalu to Papar", distance: "37.7 km" },
+          { image: "tawau.jpg", alt: "KK to TAWAU", description: "Kota Kinabalu to Tawau", distance: "451 km" },
+          { image: "sipitang.jpg", alt: "KK to SIPITANG", description: "Kota Kinabalu to Sipitang", distance: "138 km" },
+          { image: "tenom.jpg", alt: "KK to TENOM", description: "Kota Kinabalu to Tenom", distance: "149.7 km" },
+          { image: "nabawan.jpg", alt: "KK to NABAWAN", description: "Kota Kinabalu to Nabawan", distance: "175.9 km" }
         ]
       %>
 
-      <% destinations.each do |destination| %>
-        <div class="col-md-4">
-          <% if user_signed_in? %>
-            <%= link_to image_tag(destination[:image], alt: destination[:alt], class: "img-fluid"), new_booking_path %>
-          <% else %>
-            <%= link_to image_tag(destination[:image], alt: destination[:alt], class: "img-fluid"), new_user_session_path %>
-          <% end %>
-          <p>Description: <%= destination[:description] %></p>
-          <p>Distance: <%= destination[:distance] %></p>
-          <p>Price: <%= destination[:price] %></p>
-          <% if user_signed_in? %>
-            <p><a href="<%= new_booking_path %>">Book this destination</a></p>
-          <% end %>
-        </div>
-      <% end %>
+      <div class="row">
+        <% destinations.each do |destination| %>
+          <div class="col-md-4">
+            <% if user_signed_in? %>
+              <%= link_to image_tag(destination[:image], alt: destination[:alt], class: "destination-image img-fluid"), new_booking_path %>
+            <% else %>
+              <%= link_to image_tag(destination[:image], alt: destination[:alt], class: "destination-image img-fluid"), new_user_session_path %>
+            <% end %>
+            <p>Description: <%= destination[:description] %></p>
+            <p>Distance: <%= destination[:distance] %></p>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div><br><br>
 

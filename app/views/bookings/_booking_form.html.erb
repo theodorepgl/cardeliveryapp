@@ -1,37 +1,77 @@
-<%= form_with model: booking, local: true do |form| %>
-  <div class="form-group">
-    <%= form.label :car_type, "Car Type" %>
-    <%= form.select :car_type, options_for_select(["Motorcycle", "Small Vehicle", "Big Vehicle", "Lorry"]), {}, class: "form-control" %>
-  </div>
+<div class="container">
+  <h2 class="text-center">Place a Booking</h2><br>
 
-  <div class="form-group">
-    <%= form.label :pickup_location, "Pickup Location" %>
-    <%= form.select :pickup_location, options_for_select(["Kota Kinabalu"]), {}, class: "form-control" %>
-  </div>
+  <form>
+    <div class="form-group">
+      <label for="carType">Car Type</label>
+      <select class="form-control" id="carType" name="carType">
+        <option value="">Select Car Type</option>
+        <option value="motorcycle">Motorcycle</option>
+        <option value="smallVehicle">Small Vehicle</option>
+        <option value="bigVehicle">Big Vehicle</option>
+      </select>
+    </div>
 
-  <div class="form-group">
-    <%= form.label :dropoff_location, "Dropoff Location" %>
-    <%= form.select :dropoff_location, options_for_select(["Kudat", "Kota Marudu", "Ranau", "Sandakan", "Papar", "Tawau", "Sipitang", "Tenom", "Nabawan"]), {}, class: "form-control" %>
-  </div>
+    <div class="form-group">
+      <label for="pickupLocation">Pickup Location</label>
+      <select class="form-control" id="pickupLocation" name="pickupLocation">
+        <option value="">Select Pickup Location</option>
+        <option value="Kota Kinabalu">Kota Kinabalu</option>
+      </select>
+    </div>
 
-  <div class="form-group">
-    <%= form.label :pickup_time, "Pickup Time" %>
-    <%= form.datetime_local_field :pickup_time, class: "form-control" %>
-  </div>
+    <div class="form-group">
+      <label for="dropoffLocation">Dropoff Location</label>
+      <select class="form-control" id="dropoffLocation" name="dropoffLocation">
+        <option value="">Select Dropoff Location</option>
+        <option value="Kudat">Kudat</option>
+        <option value="Kota Marudu">Kota Marudu</option>
+        <option value="Ranau">Ranau</option>
+        <option value="Sandakan">Sandakan</option>
+        <option value="Papar">Papar</option>
+        <option value="Tawau">Tawau</option>
+        <option value="Sipitang">Sipitang</option>
+        <option value="Tenom">Tenom</option>
+        <option value="Nabawan">Nabawan</option>
+      </select>
+    </div>
 
-  <div class="form-group">
-    <%= form.label :distance, "Distance" %>
-    <%= form.text_field :distance, class: "form-control", disabled: true %>
-  </div>
 
-  <div class="form-group">
-    <%= form.label :price, "Price" %>
-    <%= form.text_field :price, class: "form-control", disabled: true %>
-  </div>
+    <div class="form-group">
+      <label for="pickupTime">Pickup Time</label>
+      <input type="datetime-local" class="form-control" id="pickupTime" name="pickupTime">
+    </div>
 
-  <%= form.hidden_field :destination_description, value: "" %>
+    <button type="submit" class="btn btn-primary"><%= link_to 'Place Booking', bookings_path(@bookings)%></button>
+  </form>
+</div>
 
-  <div class="form-group">
-    <%= form.submit "Place Booking", class: "btn btn-primary" %>
-  </div>
-<% end %>
+<!-- <script>
+  const routes = {
+    "Kudat": { distance: 179.1, price: 100 },
+    "Kota Marudu": { distance: 118.5, price: 200 },
+    "Ranau": { distance: 129.5, price: 300 },
+    "Sandakan": { distance: 354.8, price: 400 },
+    "Papar": { distance: 37.7, price: 500 },
+    "Tawau": { distance: 451, price: 600 },
+    "Sipitang": { distance: 138, price: 700 },
+    "Tenom": { distance: 149.7, price: 800 },
+    "Nabawan": { distance: 175.9, price: 900 }
+  };
+
+  function updateDistanceAndPrice() {
+    const pickupLocation = document.getElementById("pickupLocation").value;
+    const dropoffLocation = document.getElementById("dropoffLocation").value;
+
+    const distanceInput = document.getElementById("distance");
+    const priceInput = document.getElementById("price");
+
+    const distance = routes[dropoffLocation].distance;
+    const price = routes[dropoffLocation].price;
+
+    distanceInput.value = `${distance} km`;
+    priceInput.value = `RM${price}`;2
+  }
+
+  document.getElementById("dropoffLocation").addEventListener("change", updateDistanceAndPrice);
+</script> -->
