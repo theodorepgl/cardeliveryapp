@@ -10,7 +10,7 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @booking = current_user.bookings.new(booking_params)
+    @booking = current_user.bookings.create(booking_params)
     
     if @booking.save
       flash[:success] = "New booking added!"
@@ -18,15 +18,6 @@ class BookingsController < ApplicationController
     else
       render :new
     end
-  end
-
-  def show
-  end
-
-  def edit
-  end
-
-  def update
   end
 
   private
