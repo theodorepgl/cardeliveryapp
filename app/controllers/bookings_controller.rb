@@ -11,15 +11,16 @@ class BookingsController < ApplicationController
 
   def create
     @booking = current_user.bookings.new(booking_params)
+    
     if @booking.save
-      redirect_to booking_path(@booking), notice: "Booking success!"
+      flash[:success] = "New booking added!"
+      redirect_to booking_path(@booking)
     else
       render :new
     end
   end
 
   def show
-    @booking = Booking.find(params[:id])
   end
 
   def edit

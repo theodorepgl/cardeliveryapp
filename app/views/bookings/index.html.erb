@@ -1,25 +1,14 @@
-<div class="container">
-  <h2 class="text-center">Booking Details</h2><br>
+<h2>Booking Details</h2><br>
 
-  <div class="form-group">
-    <label for="carTypeResult">Car Type</label>
-    <input type="text" class="form-control" id="carTypeResult" name="carTypeResult" readonly>
-  </div>
-
-  <div class="form-group">
-    <label for="pickupLocationResult">Pickup Location</label>
-    <input type="text" class="form-control" id="pickupLocationResult" name="pickupLocationResult" readonly>
-  </div>
-
-  <div class="form-group">
-    <label for="dropoffLocationResult">Dropoff Location</label>
-    <input type="text" class="form-control" id="dropoffLocationResult" name="dropoffLocationResult" readonly>
-  </div>
-
-  <div class="form-group">
-    <label for="pickupTimeResult">Pickup Time</label>
-    <input type="text" class="form-control" id="pickupTimeResult" name="pickupTimeResult" readonly>
-  </div>
-
-  <button type="submit" class="btn btn-primary">Confirm Booking</button>
-</div>
+<% if @bookings.any? %>
+  <% @bookings.each do |booking| %>
+    <p>Car Type: <%= @car_type %></p>
+    <p>Pickup Location: <%= @pickup_location %></p>
+    <p>Dropoff Location: <%= @dropoff_location %></p>
+    <p>Pickup Time: <%= @pickup_time %></p>
+    <p>Distance: <%= @distance %> km</p>
+    <p>Price: RM<%= @price %></p>
+  <% end %>
+<% else %>
+  <p> Not Found. </p>
+<% end %>

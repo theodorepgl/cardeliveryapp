@@ -9,6 +9,7 @@
         <option value="motorcycle">Motorcycle</option>
         <option value="smallVehicle">Small Vehicle</option>
         <option value="bigVehicle">Big Vehicle</option>
+        <option value="lorry">Lorry</option>
       </select>
     </div>
 
@@ -36,27 +37,36 @@
       </select>
     </div>
 
-
     <div class="form-group">
       <label for="pickupTime">Pickup Time</label>
       <input type="datetime-local" class="form-control" id="pickupTime" name="pickupTime">
     </div>
 
-    <button type="submit" class="btn btn-primary"><%= link_to 'Place Booking', bookings_path(@bookings)%></button>
+    <div class="form-group">
+      <label for="distance">Distance</label>
+      <input type="text" class="form-control" id="distance" name="distance" disabled>
+    </div>
+
+    <div class="form-group">
+      <label for="price">Price</label>
+      <input type="text" class="form-control" id="price" name="price" disabled>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Place Booking</button>
   </form>
 </div>
 
-<!-- <script>
+<script>
   const routes = {
     "Kudat": { distance: 179.1, price: 100 },
-    "Kota Marudu": { distance: 118.5, price: 200 },
-    "Ranau": { distance: 129.5, price: 300 },
-    "Sandakan": { distance: 354.8, price: 400 },
-    "Papar": { distance: 37.7, price: 500 },
-    "Tawau": { distance: 451, price: 600 },
-    "Sipitang": { distance: 138, price: 700 },
-    "Tenom": { distance: 149.7, price: 800 },
-    "Nabawan": { distance: 175.9, price: 900 }
+    "Kota Marudu": { distance: 118.5, price: 100 },
+    "Ranau": { distance: 129.5, price: 100 },
+    "Sandakan": { distance: 354.8, price: 100 },
+    "Papar": { distance: 37.7, price: 100 },
+    "Tawau": { distance: 451, price: 100 },
+    "Sipitang": { distance: 138, price: 100 },
+    "Tenom": { distance: 149.7, price: 100 },
+    "Nabawan": { distance: 175.9, price: 100 }
   };
 
   function updateDistanceAndPrice() {
@@ -70,8 +80,8 @@
     const price = routes[dropoffLocation].price;
 
     distanceInput.value = `${distance} km`;
-    priceInput.value = `RM${price}`;2
+    priceInput.value = `RM${price}`;
   }
 
   document.getElementById("dropoffLocation").addEventListener("change", updateDistanceAndPrice);
-</script> -->
+</script>
