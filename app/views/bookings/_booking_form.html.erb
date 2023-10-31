@@ -55,33 +55,3 @@
     <button type="submit" class="btn btn-primary">Place Booking</button>
   </form>
 </div>
-
-<script>
-  const routes = {
-    "Kudat": { distance: 179.1, price: 100 },
-    "Kota Marudu": { distance: 118.5, price: 100 },
-    "Ranau": { distance: 129.5, price: 100 },
-    "Sandakan": { distance: 354.8, price: 100 },
-    "Papar": { distance: 37.7, price: 100 },
-    "Tawau": { distance: 451, price: 100 },
-    "Sipitang": { distance: 138, price: 100 },
-    "Tenom": { distance: 149.7, price: 100 },
-    "Nabawan": { distance: 175.9, price: 100 }
-  };
-
-  function updateDistanceAndPrice() {
-    const pickupLocation = document.getElementById("pickupLocation").value;
-    const dropoffLocation = document.getElementById("dropoffLocation").value;
-
-    const distanceInput = document.getElementById("distance");
-    const priceInput = document.getElementById("price");
-
-    const distance = routes[dropoffLocation].distance;
-    const price = routes[dropoffLocation].price;
-
-    distanceInput.value = `${distance} km`;
-    priceInput.value = `RM${price}`;
-  }
-
-  document.getElementById("dropoffLocation").addEventListener("change", updateDistanceAndPrice);
-</script>
